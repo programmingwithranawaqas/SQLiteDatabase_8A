@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity  //implements ContactAdapter.ContactClicked
 {
 
-    FloatingActionButton fabAdd;
+    FloatingActionButton fabAdd, fabFilter;
     RecyclerView rvContacts;
     LinearLayoutManager manager;
     ContactAdapter adapter;
@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity  //implements ContactAdapter
                 startActivity(new Intent(MainActivity.this, AddContact.class));
             }
         });
+        fabFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FilteredContacts.class));
+                finish();;
+            }
+        });
 
     }
     private void init()
     {
         fabAdd = findViewById(R.id.fabAdd);
+        fabFilter = findViewById(R.id.fabFilter);
         rvContacts = findViewById(R.id.rvContacts);
         rvContacts.setHasFixedSize(true);
         manager = new LinearLayoutManager(this);
